@@ -1,166 +1,43 @@
-/* Genel ayarlar */
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background-color: #fff;
-  position: relative;
-  min-height: 100vh;
-}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RefikOFLU</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Logo -->
+  <a href="/" class="logo">
+    <img src="logo.png" alt="RefikOFLU Logo">
+  </a>
 
-/* Logo (Üst ortada) */
-.logo {
-  position: absolute;
-  top: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: block;
-}
+  <!-- İş ikonu -->
+  <a href="is.html" class="main-icon is-icon">
+    <img src="ikon1.png" data-hover="ikon1-hover.png" class="hover-icon fixed-icon" alt="İş">
+  </a>
 
-.logo img {
-  height: auto;
-  width: 300px;
-}
+  <!-- Aşk ikonu -->
+  <a href="https://www.youtube.com/@refikoflu" target="_blank" class="main-icon ask-icon">
+    <img src="ikon2.png" data-hover="ikon2-hover.png" class="hover-icon fixed-icon" alt="Aşk">
+  </a>
 
-/* Ana ikonlar için konumlandırma */
-.main-icon {
-  position: absolute;
-  width: 150px;
-  transition: transform 0.3s ease;
-}
+  <!-- Yaşam ikonu ve alt ikonlar -->
+  <div class="yasam-icon-wrapper main-icon">
+    <img src="ikon3.png" data-hover="ikon3-hover.png" class="hover-icon fixed-icon yasam-main" alt="Yaşam">
+    <div class="yasam-sub-icons">
+      <a href="https://www.facebook.com/refikoflu" target="_blank"><img src="fb.png" alt="Facebook"></a>
+      <a href="https://www.instagram.com/refikoflu" target="_blank"><img src="insta.png" alt="Instagram"></a>
+      <a href="https://twitter.com/refikoflu" target="_blank"><img src="twitter.png" alt="Twitter"></a>
+    </div>
+  </div>
 
-/* İş ikonu (Sol-orta) */
-.is-icon {
-  top: 50%;
-  left: 20%;
-  transform: translateY(-50%);
-}
+  <!-- WhatsApp ikonu -->
+  <a href="https://wa.me/905330879933" target="_blank" class="whatsapp">
+    <img src="whatsapp.png" data-hover="whatsapp-hover.png" class="hover-icon" alt="WhatsApp">
+  </a>
 
-/* Aşk ikonu (Tam orta) */
-.ask-icon {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* Yaşam ana ikonu (Sağ-orta) */
-.yasam-icon-wrapper {
-  top: 50%;
-  right: 20%;
-  transform: translateY(-50%);
-}
-
-/* Yaşam ana ikonu resmi */
-.yasam-main {
-  width: 100%;
-  transition: opacity 0.3s ease;
-}
-
-/* Tüm ikonlar için hover efekti */
-.hover-icon {
-  cursor: pointer;
-  width: 100%;
-  transform-origin: center center;
-}
-
-/* Hover efekti */
-.hover-icon:hover {
-  transform: scale(1.2);
-}
-
-/* Yaşam alt ikonları */
-.yasam-sub-icons {
-  position: absolute;
-  top: 0;
-  left: 70px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-.yasam-sub-icons img {
-  width: 50px;
-  transform-origin: center center;
-  transition: transform 0.3s ease;
-}
-
-.yasam-sub-icons img:hover {
-  transform: scale(1.2);
-}
-
-/* Hover veya dokunma ile açma */
-.yasam-icon-wrapper.hovered .yasam-sub-icons {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.yasam-icon-wrapper.hovered .yasam-main {
-  opacity: 0;
-}
-
-/* WhatsApp ikonu (Alt ortada) */
-.whatsapp {
-  position: fixed;
-  left: 50%;
-  bottom: 30px;
-  z-index: 1000;
-  width: 90px;
-  transform: translateX(-50%);
-}
-
-.whatsapp:hover {
-  transform: translateX(-50%) scale(0.768);
-}
-
-/* İş sayfası */
-body.is-page {
-  background-color: #fff;
-}
-
-.is-content {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 20px 0;
-  box-sizing: border-box;
-}
-
-.full-image {
-  max-width: 80%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  transition: transform 0.3s ease;
-  transform-origin: top center;
-}
-
-.full-image:hover {
-  transform: scale(1.02);
-}
-
-/* Mobil düzenlemeleri */
-@media (max-width: 768px) {
-  .main-icon {
-    width: 180px; /* %20 büyütme */
-  }
-
-  .is-icon {
-    left: 10%;
-  }
-
-  .ask-icon {
-    left: 50%;
-  }
-
-  .yasam-icon-wrapper {
-    right: 10%;
-  }
-
-  .yasam-sub-icons {
-    left: 50px;
-    gap: 15px;
-  }
-}
+  <script src="script.js"></script>
+</body>
+</html>
