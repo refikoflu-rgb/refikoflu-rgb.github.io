@@ -1,23 +1,20 @@
-// Hover efekti
+// Hover efekti tüm ikonlar için
 document.querySelectorAll('.hover-icon').forEach(icon => {
   const original = icon.src;
   const hover = icon.dataset.hover;
-  if(hover){
+  if (hover) {
     icon.addEventListener('mouseenter', () => { icon.src = hover; });
     icon.addEventListener('mouseleave', () => { icon.src = original; });
   }
 });
 
-// Modal açma
-const modal = document.getElementById("modal");
-const modalImg = document.getElementById("modal-img");
-const isIcon = document.getElementById("isIcon");
-
-isIcon.addEventListener('click', () => {
-  modal.style.display = "block";
-  modalImg.src = "is-page.png"; // tıklanınca gösterilecek görsel
+// Mobilde yasam ikonuna dokunma
+const yasamWrapper = document.querySelector('.yasam-icon-wrapper');
+yasamWrapper.addEventListener('click', (e) => {
+  if(window.innerWidth <= 768){
+    e.preventDefault();
+    const subIcons = yasamWrapper.querySelector('.yasam-sub-icons');
+    subIcons.style.opacity = subIcons.style.opacity === '1' ? '0' : '1';
+    subIcons.style.pointerEvents = subIcons.style.opacity === '1' ? 'auto' : 'none';
+  }
 });
-
-const span = document.getElementsByClassName("close")[0];
-span.onclick = () => { modal.style.display = "none"; }
-window.onclick = e => { if(e.target == modal) modal.style.display = "none"; }
