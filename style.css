@@ -25,7 +25,6 @@ body {
 .main-icon {
   position: absolute;
   width: 150px;
-  transition: transform 0.3s ease;
 }
 
 /* İş ikonu (Sol-orta) */
@@ -42,27 +41,25 @@ body {
   transform: translate(-50%, -50%);
 }
 
-/* Yaşam ana ikonu (Sağ-orta) */
+/* Yaşam alt ikonları (Sağ-orta) */
 .yasam-icon-wrapper {
   top: 50%;
   right: 20%;
   transform: translateY(-50%);
 }
 
-/* Yaşam ana ikonu resmi */
 .yasam-main {
   width: 100%;
-  transition: opacity 0.3s ease;
 }
 
 /* Tüm ikonlar için hover efekti */
 .hover-icon {
   cursor: pointer;
-  width: 100%;
+  transition: transform 0.3s ease, opacity 0.3s ease;
   transform-origin: center center;
+  width: 100%;
 }
 
-/* Hover efekti */
 .hover-icon:hover {
   transform: scale(1.2);
 }
@@ -90,13 +87,12 @@ body {
   transform: scale(1.2);
 }
 
-/* Hover veya dokunma ile açma */
-.yasam-icon-wrapper.hovered .yasam-sub-icons {
+.yasam-icon-wrapper:hover .yasam-sub-icons {
   opacity: 1;
   pointer-events: auto;
 }
 
-.yasam-icon-wrapper.hovered .yasam-main {
+.yasam-icon-wrapper:hover .yasam-main {
   opacity: 0;
 }
 
@@ -108,6 +104,8 @@ body {
   z-index: 1000;
   width: 90px;
   transform: translateX(-50%);
+  transition: transform 0.3s ease;
+  transform-origin: center;
 }
 
 .whatsapp:hover {
@@ -123,44 +121,20 @@ body.is-page {
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  padding: 20px 0;
+  align-items: center;
+  padding: 40px 0;
   box-sizing: border-box;
 }
 
 .full-image {
-  max-width: 80%;
+  width: 80%;
   height: auto;
   display: block;
   margin: 0 auto;
   transition: transform 0.3s ease;
-  transform-origin: top center;
+  transform-origin: center center;
 }
 
 .full-image:hover {
   transform: scale(1.02);
-}
-
-/* Mobil düzenlemeleri */
-@media (max-width: 768px) {
-  .main-icon {
-    width: 180px; /* %20 büyütme */
-  }
-
-  .is-icon {
-    left: 10%;
-  }
-
-  .ask-icon {
-    left: 50%;
-  }
-
-  .yasam-icon-wrapper {
-    right: 10%;
-  }
-
-  .yasam-sub-icons {
-    left: 50px;
-    gap: 15px;
-  }
 }
