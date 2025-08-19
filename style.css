@@ -24,12 +24,7 @@ body {
 /* Ana ikonlar için konumlandırma */
 .main-icon {
   position: absolute;
-}
-
-/* Ana ikonların img boyutları */
-.main-icon img {
   width: 150px;
-  height: auto;
 }
 
 /* İş ikonu (Sol-orta) */
@@ -54,8 +49,7 @@ body {
 }
 
 .yasam-main {
-  width: 150px; /* main ikon boyutu */
-  height: auto;
+  width: 100%;
 }
 
 /* Tüm ikonlar için hover efekti */
@@ -63,6 +57,7 @@ body {
   cursor: pointer;
   transition: transform 0.3s ease, opacity 0.3s ease;
   transform-origin: center center;
+  width: 100%;
 }
 
 .hover-icon:hover {
@@ -84,7 +79,6 @@ body {
 
 .yasam-sub-icons img {
   width: 50px;
-  height: auto;
   transform-origin: center center;
   transition: transform 0.3s ease;
 }
@@ -108,13 +102,10 @@ body {
   left: 50%;
   bottom: 30px;
   z-index: 1000;
+  width: 90px;
   transform: translateX(-50%);
   transition: transform 0.3s ease;
-}
-
-.whatsapp img {
-  width: 90px;
-  height: auto;
+  transform-origin: center;
 }
 
 .whatsapp:hover {
