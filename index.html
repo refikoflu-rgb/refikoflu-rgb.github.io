@@ -13,19 +13,19 @@
     <img src="logo.png" alt="RefikOFLU Logo">
   </a>
 
-  <!-- İş ikonu -->
-  <a href="is.html" class="main-icon is-icon">
-    <img src="ikon1.png" data-hover="ikon1-hover.png" class="hover-icon fixed-icon" alt="İş">
-  </a>
+  <!-- İş ikonu (hover ve modal) -->
+  <div class="main-icon is-icon">
+    <img src="ikon1.png" data-hover="ikon1-hover.png" class="hover-icon" alt="İş" id="isIcon">
+  </div>
 
   <!-- Aşk ikonu -->
   <a href="https://www.youtube.com/@refikoflu" target="_blank" class="main-icon ask-icon">
-    <img src="ikon2.png" data-hover="ikon2-hover.png" class="hover-icon fixed-icon" alt="Aşk">
+    <img src="ikon2.png" data-hover="ikon2-hover.png" class="hover-icon" alt="Aşk">
   </a>
 
   <!-- Yaşam ikonu ve alt ikonlar -->
   <div class="yasam-icon-wrapper main-icon">
-    <img src="ikon3.png" data-hover="ikon3-hover.png" class="hover-icon fixed-icon yasam-main" alt="Yaşam">
+    <img src="ikon3.png" data-hover="ikon3-hover.png" class="hover-icon yasam-main" alt="Yaşam">
     <div class="yasam-sub-icons">
       <a href="https://www.facebook.com/refikoflu" target="_blank"><img src="fb.png" alt="Facebook"></a>
       <a href="https://www.instagram.com/refikoflu" target="_blank"><img src="insta.png" alt="Instagram"></a>
@@ -37,6 +37,12 @@
   <a href="https://wa.me/905330879933" target="_blank" class="whatsapp">
     <img src="whatsapp.png" data-hover="whatsapp-hover.png" class="hover-icon" alt="WhatsApp">
   </a>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modal-img">
+  </div>
 
   <script src="script.js"></script>
 </body>
