@@ -1,4 +1,4 @@
-// Hover efektleri
+// Hover efekti tüm ikonlar için (desktop)
 document.querySelectorAll('.hover-icon').forEach(icon => {
   const original = icon.src;
   const hover = icon.dataset.hover;
@@ -8,20 +8,22 @@ document.querySelectorAll('.hover-icon').forEach(icon => {
   }
 });
 
-// Yaşam ikon toggle (mobil ve masaüstü)
+// Yaşam ikonu dokunma/hover açma kapama
 const yasamWrapper = document.querySelector('.yasam-icon-wrapper');
-const yasamMain = yasamWrapper.querySelector('.yasam-main');
-const yasamSubs = yasamWrapper.querySelector('.yasam-sub-icons');
 
-yasamMain.addEventListener('click', () => {
-  const visible = yasamSubs.style.opacity === '1';
-  if (visible) {
-    yasamSubs.style.opacity = 0;
-    yasamSubs.style.pointerEvents = 'none';
-    yasamMain.style.opacity = 1;
-  } else {
-    yasamSubs.style.opacity = 1;
-    yasamSubs.style.pointerEvents = 'auto';
-    yasamMain.style.opacity = 0;
+yasamWrapper.addEventListener('mouseenter', () => {
+  yasamWrapper.classList.add('hovered');
+});
+
+yasamWrapper.addEventListener('mouseleave', () => {
+  yasamWrapper.classList.remove('hovered');
+});
+
+// Mobil için dokunma
+yasamWrapper.addEventListener('click', (e) => {
+  // Dokunma ile toggle
+  if (window.innerWidth <= 768) {
+    e.preventDefault();
+    yasamWrapper.classList.toggle('hovered');
   }
 });
