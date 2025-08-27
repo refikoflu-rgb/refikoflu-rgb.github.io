@@ -1,4 +1,4 @@
-// Hover efekti tüm ikonlar için (masaüstü)
+// Hover efekti masaüstü
 document.querySelectorAll('.hover-icon').forEach(icon => {
   const original = icon.src;
   const hover = icon.dataset.hover;
@@ -8,9 +8,9 @@ document.querySelectorAll('.hover-icon').forEach(icon => {
   }
 });
 
-// Mobil toggle alt ikonları açma
+// Mobil toggle alt ikonlar
 function isMobile() {
-  return window.innerWidth <= 768; // mobil ekran sınırı
+  return window.innerWidth <= 768;
 }
 
 document.querySelectorAll('.is-icon-wrapper, .yasam-icon-wrapper').forEach(wrapper => {
@@ -20,24 +20,24 @@ document.querySelectorAll('.is-icon-wrapper, .yasam-icon-wrapper').forEach(wrapp
   // Başlangıçta mobilde alt ikonları gizle
   if (isMobile()) subIcons.classList.remove('show');
 
-  // Ana ikona tıklandığında alt ikonları aç
+  // Ana ikon tıklandığında alt ikonları aç
   wrapper.addEventListener('click', function(e) {
     if (!isMobile()) return;
 
     if (!subIcons.classList.contains('show')) {
-      e.preventDefault();        // linki engelle
-      subIcons.classList.add('show'); // alt ikonları göster
+      e.preventDefault();
+      subIcons.classList.add('show');
     }
   });
 });
 
-// Pencere yeniden boyutlandığında alt ikonları resetle
+// Pencere yeniden boyutlandığında reset
 window.addEventListener('resize', () => {
   document.querySelectorAll('.is-hover-icons, .yasam-sub-icons').forEach(subIcons => {
     if (isMobile()) {
       subIcons.classList.remove('show');
     } else {
-      subIcons.classList.add('show'); // masaüstünde hover ile zaten görünüyor
+      subIcons.classList.add('show');
     }
   });
 });
