@@ -23,7 +23,7 @@ body {
 .logo {
   position: absolute;
   top: 30px;
-  left: 50%;
+  left: 55%; /* Mobilde biraz sağda */
   transform: translateX(-50%);
   display: block;
 }
@@ -189,7 +189,7 @@ body {
   .is-icon-wrapper,
   .yasam-icon-wrapper,
   .ask-icon {
-    position: static;
+    position: relative;
     transform: none;
     display: block;
     margin: 20px auto;
@@ -197,19 +197,17 @@ body {
 
   .logo img { width: 200px; }
 
-  /* Alt ikonlar başlangıçta gizli */
+  /* Alt ikonlar başlangıçta gizli, ana ikon ortasında */
   .is-hover-icons,
   .yasam-sub-icons {
-    position: static;
-    transform: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    flex-direction: row; /* yatay */
+    gap: 10px;
     opacity: 0;
     pointer-events: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-    justify-content: center;
-    align-items: center;
     transition: opacity 0.3s ease, transform 0.3s ease;
   }
 
