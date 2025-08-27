@@ -8,31 +8,25 @@ document.querySelectorAll('.hover-icon').forEach(icon => {
   }
 });
 
-// Mobil için toggle alt ikonları
+// Mobil toggle alt ikonları açma
 function isMobile() {
   return window.innerWidth <= 768; // mobil ekran sınırı
 }
 
 document.querySelectorAll('.is-icon-wrapper, .yasam-icon-wrapper').forEach(wrapper => {
-  const mainLink = wrapper.querySelector('a') || wrapper.querySelector('.hover-icon');
   const subIcons = wrapper.querySelector('.is-hover-icons, .yasam-sub-icons');
-
   if (!subIcons) return;
 
   // Başlangıçta mobilde alt ikonları gizle
-  if (isMobile()) {
-    subIcons.classList.remove('show');
-  }
+  if (isMobile()) subIcons.classList.remove('show');
 
+  // Ana ikona tıklandığında alt ikonları aç
   wrapper.addEventListener('click', function(e) {
-    if (!isMobile()) return; // masaüstü hover zaten çalışıyor
+    if (!isMobile()) return;
 
     if (!subIcons.classList.contains('show')) {
       e.preventDefault();        // linki engelle
       subIcons.classList.add('show'); // alt ikonları göster
-    } else {
-      // alt ikonlar zaten açıksa tıklama normal link gibi çalışır
-      // eğer ana link bir <a> değilse, alt ikonlar zaten görünür
     }
   });
 });
