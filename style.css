@@ -12,17 +12,39 @@ body {
   height: auto;
 }
 
-/* Logo */
+/* Logo genel ayarlar */
 .logo {
-  position: absolute;
-  top: 5%;
-  left: 5%;
   z-index: 50;
+  position: absolute;
 }
 
-.logo img {
-  height: auto;
-  width: 200px;
+/* Masaüstü: sayfanın üst ortasında */
+@media (min-width: 481px) {
+  .logo {
+    top: 30px;           /* üstten boşluk */
+    left: 50%;           /* yatay ortalama */
+    transform: translateX(-50%);
+  }
+
+  .logo img {
+    width: 300px;
+    max-width: 80%;
+    height: auto;
+  }
+}
+
+/* Mobil: %5 yukarıda ve %5 solda */
+@media (max-width: 480px) {
+  .logo {
+    top: 5%;
+    left: 5%;
+    transform: none;
+  }
+
+  .logo img {
+    width: 200px;
+    height: auto;
+  }
 }
 
 /* Ana ikonlar */
@@ -159,9 +181,8 @@ body {
   transform: translateX(-50%) scale(0.9);
 }
 
-/* Responsive */
+/* Responsive mobil ayarlar */
 @media (max-width: 480px) {
-
   .main-icon,
   .is-icon-wrapper,
   .yasam-icon-wrapper,
@@ -170,12 +191,6 @@ body {
     transform: none;
     display: block;
     margin: 10px auto;
-  }
-
-  /* Logo mobilde üstte ve sağda */
-  .logo {
-    top: 5%;
-    left: 5%;
   }
 
   /* Alt ikonlar başlangıçta gizli ve ana ikon ortasında */
@@ -187,7 +202,10 @@ body {
     transform: translate(-50%, -50%);
     opacity: 0;
     pointer-events: none;
-    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     transition: opacity 0.3s ease;
     z-index: 20;
