@@ -28,40 +28,8 @@ document.querySelectorAll('.is-icon-wrapper, .yasam-icon-wrapper, .ask-wrapper')
 
   wrapper.addEventListener('click', function(e) {
     if (!isMobile()) return;
-    e.stopPropagation(); // bubbling engelle
+    e.stopPropagation();
 
-    // Eğer alt ikonlar açık değilse aç
     if (!subIcons.classList.contains('show')) {
       closeAll();
-      subIcons.classList.add('show');
-      openWrapper = subIcons;
-    }
-    // Alt ikonlar zaten açıksa dokunmak başka alan ile
-    // başka ikon üzerine tıklanırsa önceki kapanır (closeAll())
-  });
-});
-
-// Alt ikon click event
-document.querySelectorAll('.is-hover-icons a, .yasam-sub-icons a').forEach(link => {
-  link.addEventListener('click', function(e) {
-    if (isMobile()) {
-      // normal link davranışı ikinci dokunuşta gerçekleşir
-    }
-  });
-});
-
-// Sayfanın başka yerine tıklayınca kapan
-document.addEventListener('click', function(e) {
-  if (!isMobile()) return;
-  if (openWrapper) {
-    // Tıklanan alan alt ikon değilse
-    if (!openWrapper.contains(e.target)) {
-      closeAll();
-    }
-  }
-});
-
-// Resize
-window.addEventListener('resize', function() {
-  closeAll();
-});
+      subIcons.classList
