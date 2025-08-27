@@ -6,6 +6,7 @@ body {
   position: relative;
   min-height: 100vh;
 }
+
 .is-content {
   display: flex;           /* Flexbox ile içeriği düzenle */
   justify-content: center; /* Yatayda ortala */
@@ -102,6 +103,7 @@ body {
   top: 50%;
   right: 20%;
   transform: translateY(-50%);
+  position: absolute;
 }
 
 .yasam-main {
@@ -186,23 +188,41 @@ body {
   .is-hover-icons img { width: 100px; }
 }
 
+/* Mobil uyumluluk */
 @media (max-width: 480px) {
-  .main-icon {
+  /* İkonların normal akışa geçmesi */
+  .main-icon,
+  .is-icon-wrapper,
+  .yasam-icon-wrapper,
+  .ask-icon {
     position: static;
+    transform: none;
     display: block;
-    margin: 30px auto;
-    width: 80px;
+    margin: 20px auto;
+    text-align: center;
   }
+
+  /* Logo küçültme */
   .logo img { width: 200px; }
+
+  /* Hover ikonlarını hep görünür yap ve dikey sırala */
+  .is-hover-icons,
   .yasam-sub-icons {
-    flex-direction: column; /* Mobilde tekrar dikey olsun */
-    gap: 8px;
-  }
-  .is-hover-icons {
+    position: static;
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+    display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
   }
+
   .is-hover-icons img { width: 80px; }
   .yasam-sub-icons img { width: 40px; }
+
+  /* WhatsApp boyutu */
   .whatsapp { width: 80px; bottom: 15px; }
 }
