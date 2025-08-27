@@ -7,13 +7,6 @@ body {
   min-height: 100vh;
 }
 
-.is-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
 .full-image {
   max-width: 100%;
   height: auto;
@@ -22,16 +15,14 @@ body {
 /* Logo */
 .logo {
   position: absolute;
-  top: 30px;
-  left: 55%; /* Mobilde biraz sağda */
-  transform: translateX(-50%);
-  display: block;
+  top: 5%;
+  left: 5%;
+  z-index: 50;
 }
 
 .logo img {
   height: auto;
-  width: 300px;
-  max-width: 80%;
+  width: 200px;
 }
 
 /* Ana ikonlar */
@@ -54,7 +45,7 @@ body {
   transition: opacity 0.3s ease;
 }
 
-/* Hover ikonları */
+/* Hover ikonları masaüstü */
 .is-hover-icons {
   position: absolute;
   top: 50%;
@@ -70,8 +61,8 @@ body {
 
 .is-hover-icons img {
   width: 150px;
-  transition: transform 0.3s ease;
   cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
 .is-hover-icons img:hover {
@@ -90,10 +81,11 @@ body {
 }
 
 /* Aşk ikonu */
-.ask-icon {
+.ask-wrapper {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  position: absolute;
 }
 
 /* Yaşam alt ikonları */
@@ -101,16 +93,16 @@ body {
   top: 50%;
   right: 20%;
   transform: translateY(-50%);
+  position: absolute;
 }
 
 .yasam-main {
   width: 100%;
 }
 
-/* Hover efekt */
 .hover-icon {
   cursor: pointer;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
   transform-origin: center center;
   width: 100%;
 }
@@ -168,47 +160,37 @@ body {
 }
 
 /* Responsive */
-@media (max-width: 1024px) {
-  .main-icon { width: 120px; }
-  .is-icon-wrapper { left: 15%; }
-  .yasam-icon-wrapper { right: 15%; }
-}
-
-@media (max-width: 768px) {
-  .main-icon { width: 100px; }
-  .is-icon-wrapper { left: 10%; }
-  .yasam-icon-wrapper { right: 10%; }
-  .ask-icon { width: 110px; }
-  .whatsapp { width: 70px; bottom: 20px; }
-  .is-hover-icons img { width: 100px; }
-}
-
-/* Mobil */
 @media (max-width: 480px) {
+
   .main-icon,
   .is-icon-wrapper,
   .yasam-icon-wrapper,
-  .ask-icon {
+  .ask-wrapper {
     position: relative;
     transform: none;
     display: block;
-    margin: 20px auto;
+    margin: 10px auto;
   }
 
-  .logo img { width: 200px; }
+  /* Logo mobilde üstte ve sağda */
+  .logo {
+    top: 5%;
+    left: 5%;
+  }
 
-  /* Alt ikonlar başlangıçta gizli, ana ikon ortasında */
+  /* Alt ikonlar başlangıçta gizli ve ana ikon ortasında */
   .is-hover-icons,
   .yasam-sub-icons {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    flex-direction: row; /* yatay */
-    gap: 10px;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    flex-direction: row;
+    gap: 10px;
+    transition: opacity 0.3s ease;
+    z-index: 20;
   }
 
   /* Toggle ile görünür */
@@ -220,6 +202,4 @@ body {
 
   .is-hover-icons img { width: 80px; }
   .yasam-sub-icons img { width: 40px; }
-
-  .whatsapp { width: 80px; bottom: 15px; }
 }
