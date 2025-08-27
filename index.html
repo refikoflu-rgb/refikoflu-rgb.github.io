@@ -8,20 +8,34 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Logo -->
   <a href="/" class="logo">
     <img src="images/logo.png" alt="RefikOFLU Logo">
   </a>
 
-  <a href="is.html" class="main-icon is-icon">
-    <img src="images/ikon1.png" data-hover="images/ikon1-hover.png"
-         class="hover-icon fixed-icon" alt="İş">
-  </a>
+  <!-- İş ikonu (hover ile 2 ikon çıkıyor) -->
+  <div class="is-icon-wrapper main-icon">
+    <!-- Normal ikon -->
+    <img src="images/ikon1.png" alt="İş" class="is-main">
 
+    <!-- Hover ikonları -->
+    <div class="is-hover-icons">
+      <a href="is.html">
+        <img src="images/ikon1-hover.png" alt="İş Sayfası">
+      </a>
+      <a href="is2.html">
+        <img src="images/ikon11-hover.png" alt="İş 2. Sayfa">
+      </a>
+    </div>
+  </div>
+
+  <!-- Aşk ikonu -->
   <a href="https://www.youtube.com/@refikoflu" target="_blank" class="main-icon ask-icon">
     <img src="images/ikon2.png" data-hover="images/ikon2-hover.png"
          class="hover-icon fixed-icon" alt="Aşk">
   </a>
 
+  <!-- Yaşam ikonu -->
   <div class="yasam-icon-wrapper main-icon">
     <img src="images/ikon3.png" data-hover="images/ikon3-hover.png"
          class="hover-icon fixed-icon yasam-main" alt="Yaşam">
@@ -32,6 +46,7 @@
     </div>
   </div>
 
+  <!-- WhatsApp ikonu -->
   <a href="https://wa.me/905330879933" target="_blank" class="whatsapp">
     <img src="images/whatsapp.png" data-hover="images/whatsapp-hover.png" class="hover-icon" alt="WhatsApp">
   </a>
