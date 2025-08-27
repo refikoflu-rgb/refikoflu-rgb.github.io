@@ -7,7 +7,7 @@ body {
   min-height: 100vh;
 }
 
-/* Logo */
+/* Logo (Üst ortada) */
 .logo {
   position: absolute;
   top: 30px;
@@ -15,39 +15,56 @@ body {
   transform: translateX(-50%);
   display: block;
 }
-.logo img { width: 300px; height: auto; }
 
-/* Ana ikonlar */
-.main-icon { position: absolute; width: 150px; }
+.logo img {
+  height: auto;
+  width: 300px;
+}
 
-/* İş ikonu */
-.is-icon { top: 50%; left: 20%; transform: translateY(-50%); }
-
-/* İkon1 alt ikonları */
-.ikon1-sub-icons {
+/* Ana ikonlar için konumlandırma */
+.main-icon {
   position: absolute;
-  top: 0;
-  left: 160px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
+  width: 150px;
 }
-.ikon1-sub-icons img {
-  width: 60px;
+
+/* İş ikonu (Sol-orta) */
+.is-icon {
+  top: 50%;
+  left: 20%;
+  transform: translateY(-50%);
+}
+
+/* Aşk ikonu (Tam orta) */
+.ask-icon {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Yaşam alt ikonları (Sağ-orta) */
+.yasam-icon-wrapper {
+  top: 50%;
+  right: 20%;
+  transform: translateY(-50%);
+}
+
+.yasam-main {
+  width: 100%;
+}
+
+/* Tüm ikonlar için hover efekti */
+.hover-icon {
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center center;
+  width: 100%;
 }
-.ikon1-sub-icons img:hover { transform: scale(1.2); }
 
-/* Aşk ikonu */
-.ask-icon { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.hover-icon:hover {
+  transform: scale(1.2);
+}
 
-/* Yaşam ikonları */
-.yasam-icon-wrapper { top: 50%; right: 20%; transform: translateY(-50%); }
-.yasam-main { width: 100%; }
+/* Yaşam alt ikonları */
 .yasam-sub-icons {
   position: absolute;
   top: 0;
@@ -59,12 +76,27 @@ body {
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
-.yasam-sub-icons img { width: 50px; transition: transform 0.3s ease; }
-.yasam-sub-icons img:hover { transform: scale(1.2); }
-.yasam-icon-wrapper:hover .yasam-sub-icons { opacity: 1; pointer-events: auto; }
-.yasam-icon-wrapper:hover .yasam-main { opacity: 0; }
 
-/* WhatsApp ikonu */
+.yasam-sub-icons img {
+  width: 50px;
+  transform-origin: center center;
+  transition: transform 0.3s ease;
+}
+
+.yasam-sub-icons img:hover {
+  transform: scale(1.2);
+}
+
+.yasam-icon-wrapper:hover .yasam-sub-icons {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.yasam-icon-wrapper:hover .yasam-main {
+  opacity: 0;
+}
+
+/* WhatsApp ikonu (Alt ortada) */
 .whatsapp {
   position: fixed;
   left: 50%;
@@ -73,11 +105,18 @@ body {
   width: 90px;
   transform: translateX(-50%);
   transition: transform 0.3s ease;
+  transform-origin: center;
 }
-.whatsapp:hover { transform: translateX(-50%) scale(0.768); }
+
+.whatsapp:hover {
+  transform: translateX(-50%) scale(0.768);
+}
 
 /* İş sayfası */
-body.is-page { background-color: #fff; }
+body.is-page {
+  background-color: #fff;
+}
+
 .is-content {
   width: 100%;
   display: flex;
@@ -86,6 +125,7 @@ body.is-page { background-color: #fff; }
   padding: 40px 0;
   box-sizing: border-box;
 }
+
 .full-image {
   width: 80%;
   height: auto;
@@ -94,4 +134,7 @@ body.is-page { background-color: #fff; }
   transition: transform 0.3s ease;
   transform-origin: center center;
 }
-.full-image:hover { transform: scale(1.02); }
+
+.full-image:hover {
+  transform: scale(1.02);
+}
