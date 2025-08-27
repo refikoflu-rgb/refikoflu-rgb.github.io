@@ -210,65 +210,6 @@ body {
     transition: opacity 0.3s ease;
     z-index: 20;
   }
-/* Mobil (480px ve altı) */
-@media (max-width: 480px) {
-  /* Logo en üstte ortalı */
-  .logo {
-    position: relative;
-    top: 0;
-    left: 0;
-    transform: none;
-    display: flex;
-    justify-content: center;
-    margin: 20px auto;
-  }
-
-  .logo img {
-    width: 200px;
-    height: auto;
-  }
-
-  /* Ana ikonlar dikey sırada */
-  .main-icon,
-  .is-icon-wrapper,
-  .yasam-icon-wrapper,
-  .ask-wrapper {
-    position: relative;
-    transform: none;
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-  }
-
-  /* Alt ikonlar (ilk başta gizli, ana ikon ortasında açılır) */
-  .is-hover-icons,
-  .yasam-sub-icons {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    pointer-events: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    transition: opacity 0.3s ease;
-    z-index: 20;
-  }
-
-  /* Toggle ile görünür */
-  .is-hover-icons.show,
-  .yasam-sub-icons.show {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  /* Boyutlar */
-  .is-hover-icons img { width: 80px; }
-  .yasam-sub-icons img { width: 40px; }
-}
 
   /* Toggle ile görünür */
   .is-hover-icons.show,
