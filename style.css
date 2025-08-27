@@ -6,6 +6,17 @@ body {
   position: relative;
   min-height: 100vh;
 }
+.is-content {
+  display: flex;           /* Flexbox ile içeriği düzenle */
+  justify-content: center; /* Yatayda ortala */
+  align-items: center;     /* Dikeyde ortala (isteğe bağlı) */
+  min-height: 100vh;       /* Sayfa yüksekliğini kapla */
+}
+
+.full-image {
+  max-width: 100%;         /* Görsel taşmasın */
+  height: auto;            /* Oran bozulmasın */
+}
 
 /* Logo (Üst ortada) */
 .logo {
@@ -19,19 +30,64 @@ body {
 .logo img {
   height: auto;
   width: 300px;
+  max-width: 80%;
 }
 
-/* Ana ikonlar için konumlandırma */
+/* Ana ikonlar */
 .main-icon {
   position: absolute;
   width: 150px;
 }
 
-/* İş ikonu (Sol-orta) */
-.is-icon {
+/* İş ikonu wrapper */
+.is-icon-wrapper {
   top: 50%;
   left: 20%;
   transform: translateY(-50%);
+  position: absolute;
+  width: 150px;
+  text-align: center;
+}
+
+/* Normal ikon */
+.is-main {
+  width: 100%;
+  transition: opacity 0.3s ease;
+}
+
+/* Hover ikonları (başta gizli, ortalanmış) */
+.is-hover-icons {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.9);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.is-hover-icons img {
+  width: 150px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.is-hover-icons img:hover {
+  transform: scale(1.1);
+}
+
+/* Hover olduğunda değişim */
+.is-icon-wrapper:hover .is-main {
+  opacity: 0;
+}
+
+.is-icon-wrapper:hover .is-hover-icons {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 /* Aşk ikonu (Tam orta) */
@@ -41,7 +97,7 @@ body {
   transform: translate(-50%, -50%);
 }
 
-/* Yaşam alt ikonları (Sağ-orta) */
+/* Yaşam alt ikonları */
 .yasam-icon-wrapper {
   top: 50%;
   right: 20%;
@@ -52,29 +108,30 @@ body {
   width: 100%;
 }
 
-/* Tüm ikonlar için hover efekti */
+/* Hover efekt */
 .hover-icon {
   cursor: pointer;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
   transform-origin: center center;
   width: 100%;
 }
 
 .hover-icon:hover {
-  transform: scale(1.2);
+  transform: scale(1.15);
 }
 
-/* Yaşam alt ikonları */
+/* Yaşam alt ikonları → yan yana */
 .yasam-sub-icons {
   position: absolute;
-  top: 0;
-  left: 70px;
+  top: 50%;
+  left: 50%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 10px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transform: translate(-50%, -50%) scale(0.9);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .yasam-sub-icons img {
@@ -90,6 +147,7 @@ body {
 .yasam-icon-wrapper:hover .yasam-sub-icons {
   opacity: 1;
   pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .yasam-icon-wrapper:hover .yasam-main {
@@ -109,32 +167,42 @@ body {
 }
 
 .whatsapp:hover {
-  transform: translateX(-50%) scale(0.768);
+  transform: translateX(-50%) scale(0.9);
 }
 
-/* İş sayfası */
-body.is-page {
-  background-color: #fff;
+/* Responsive ayarlar */
+@media (max-width: 1024px) {
+  .main-icon { width: 120px; }
+  .is-icon-wrapper { left: 15%; }
+  .yasam-icon-wrapper { right: 15%; }
 }
 
-.is-content {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 0;
-  box-sizing: border-box;
+@media (max-width: 768px) {
+  .main-icon { width: 100px; }
+  .is-icon-wrapper { left: 10%; }
+  .yasam-icon-wrapper { right: 10%; }
+  .ask-icon { width: 110px; }
+  .whatsapp { width: 70px; bottom: 20px; }
+  .is-hover-icons img { width: 100px; }
 }
 
-.full-image {
-  width: 80%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  transition: transform 0.3s ease;
-  transform-origin: center center;
-}
-
-.full-image:hover {
-  transform: scale(1.02);
+@media (max-width: 480px) {
+  .main-icon {
+    position: static;
+    display: block;
+    margin: 30px auto;
+    width: 80px;
+  }
+  .logo img { width: 200px; }
+  .yasam-sub-icons {
+    flex-direction: column; /* Mobilde tekrar dikey olsun */
+    gap: 8px;
+  }
+  .is-hover-icons {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .is-hover-icons img { width: 80px; }
+  .yasam-sub-icons img { width: 40px; }
+  .whatsapp { width: 80px; bottom: 15px; }
 }
