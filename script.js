@@ -8,49 +8,60 @@ document.querySelectorAll('.hover-icon').forEach(icon => {
   }
 });
 
-// Mobil toggle alt ikonlar ve sayfanın başka yerine tıklayınca kapanma
+// Mobil toggle + ikinci dokunuş
 function isMobile() {
-  return window.innerWidth <= 768;
+  return window.innerWidth <= 480;
 }
 
 let openWrapper = null;
 
-document.querySelectorAll('.is-icon-wrapper, .yasam-icon-wrapper').forEach(wrapper => {
+function closeAll() {
+  document.querySelectorAll('.is-hover-icons, .yasam-sub-icons').forEach(el => {
+    el.classList.remove('show');
+  });
+  openWrapper = null;
+}
+
+// Ana ikon click event
+document.querySelectorAll('.is-icon-wrapper, .yasam-icon-wrapper, .ask-wrapper').forEach(wrapper => {
   const subIcons = wrapper.querySelector('.is-hover-icons, .yasam-sub-icons');
-  if (!subIcons) return;
 
-  // Başlangıçta mobilde alt ikonları gizle
-  if (isMobile()) subIcons.classList.remove('show');
-
-  // Ana ikon tıklandığında alt ikonları aç/kapat
   wrapper.addEventListener('click', function(e) {
     if (!isMobile()) return;
+    e.stopPropagation(); // bubbling engelle
 
-    e.stopPropagation(); // click bubbling engelle
-
-    // Önceki açıksa kapat
-    if (openWrapper && openWrapper !== subIcons) {
-      openWrapper.classList.remove('show');
-    }
-
-    if (subIcons.classList.contains('show')) {
-      subIcons.classList.remove('show');
-      openWrapper = null;
-    } else {
+    // Eğer alt ikonlar açık değilse aç
+    if (!subIcons.classList.contains('show')) {
+      closeAll();
       subIcons.classList.add('show');
       openWrapper = subIcons;
+    }
+    // Alt ikonlar zaten açıksa dokunmak başka alan ile
+    // başka ikon üzerine tıklanırsa önceki kapanır (closeAll())
+  });
+});
+
+// Alt ikon click event
+document.querySelectorAll('.is-hover-icons a, .yasam-sub-icons a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    if (isMobile()) {
+      // normal link davranışı ikinci dokunuşta gerçekleşir
     }
   });
 });
 
-// Sayfanın başka bir yerine tıklayınca tüm alt ikonlar kapanır
-document.addEventListener('click', function() {
+// Sayfanın başka yerine tıklayınca kapan
+document.addEventListener('click', function(e) {
+  if (!isMobile()) return;
   if (openWrapper) {
-    openWrapper.classList.remove('show');
-    openWrapper = null;
+    // Tıklanan alan alt ikon değilse
+    if (!openWrapper.contains(e.target)) {
+      closeAll();
+    }
   }
 });
 
-// Pencere yeniden boyutlandığında reset
-window.addEventListener('resize', () => {
-  document.querySelectorAll('.is-hover-icons, .yasam
+// Resize
+window.addEventListener('resize', function() {
+  closeAll();
+});
