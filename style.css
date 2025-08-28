@@ -7,29 +7,25 @@ body {
   min-height: 100vh;
 }
 
-.full-image {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Logo */
+/* Logo (Üst ortada) */
 .logo {
   position: absolute;
-  top: 5%;
-  left: 5%;
-  z-index: 50;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
 }
 
 .logo img {
   height: auto;
-  width: 200px;
+  width: 300px;
+  max-width: 80%;
 }
 
 /* Ana ikonlar */
 .main-icon {
   position: absolute;
   width: 150px;
-  text-align: center;
 }
 
 /* İş ikonu wrapper */
@@ -37,6 +33,9 @@ body {
   top: 50%;
   left: 20%;
   transform: translateY(-50%);
+  position: absolute;
+  width: 150px;
+  text-align: center;
 }
 
 /* Normal ikon */
@@ -45,7 +44,7 @@ body {
   transition: opacity 0.3s ease;
 }
 
-/* Hover ikonları masaüstü */
+/* Hover ikonları (başta gizli, ortalanmış) */
 .is-hover-icons {
   position: absolute;
   top: 50%;
@@ -61,15 +60,15 @@ body {
 
 .is-hover-icons img {
   width: 150px;
-  cursor: pointer;
   transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
 .is-hover-icons img:hover {
   transform: scale(1.1);
 }
 
-/* Hover masaüstü */
+/* Hover olduğunda değişim */
 .is-icon-wrapper:hover .is-main {
   opacity: 0;
 }
@@ -80,12 +79,11 @@ body {
   transform: translate(-50%, -50%) scale(1);
 }
 
-/* Aşk ikonu */
-.ask-wrapper {
+/* Aşk ikonu (Tam orta) */
+.ask-icon {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  position: absolute;
 }
 
 /* Yaşam alt ikonları */
@@ -93,16 +91,16 @@ body {
   top: 50%;
   right: 20%;
   transform: translateY(-50%);
-  position: absolute;
 }
 
 .yasam-main {
   width: 100%;
 }
 
+/* Hover efekt */
 .hover-icon {
   cursor: pointer;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
   transform-origin: center center;
   width: 100%;
 }
@@ -111,7 +109,7 @@ body {
   transform: scale(1.15);
 }
 
-/* Yaşam alt ikonları */
+/* Yaşam alt ikonları → yan yana */
 .yasam-sub-icons {
   position: absolute;
   top: 50%;
@@ -127,6 +125,7 @@ body {
 
 .yasam-sub-icons img {
   width: 50px;
+  transform-origin: center center;
   transition: transform 0.3s ease;
 }
 
@@ -144,7 +143,7 @@ body {
   opacity: 0;
 }
 
-/* WhatsApp */
+/* WhatsApp ikonu (Alt ortada) */
 .whatsapp {
   position: fixed;
   left: 50%;
@@ -153,53 +152,46 @@ body {
   width: 90px;
   transform: translateX(-50%);
   transition: transform 0.3s ease;
+  transform-origin: center;
 }
 
 .whatsapp:hover {
-  transform: translateX(-50%) scale(0.9);
+  transform: translateX(-50%) scale(1.1);
 }
 
-/* Responsive */
+/* Responsive ayarlar */
+@media (max-width: 1024px) {
+  .main-icon { width: 120px; }
+  .is-icon-wrapper { left: 15%; }
+  .yasam-icon-wrapper { right: 15%; }
+}
+
+@media (max-width: 768px) {
+  .main-icon { width: 100px; }
+  .is-icon-wrapper { left: 10%; }
+  .yasam-icon-wrapper { right: 10%; }
+  .ask-icon { width: 110px; }
+  .whatsapp { width: 70px; bottom: 20px; }
+  .is-hover-icons img { width: 100px; }
+}
+
 @media (max-width: 480px) {
-
-  .main-icon,
-  .is-icon-wrapper,
-  .yasam-icon-wrapper,
-  .ask-wrapper {
-    position: relative;
-    transform: none;
+  .main-icon {
+    position: static;
     display: block;
-    margin: 10px auto;
+    margin: 30px auto;
+    width: 80px;
   }
-
-  /* Logo mobilde üstte ve sağda */
-  .logo {
-    top: 5%;
-    left: 5%;
-  }
-
-  /* Alt ikonlar başlangıçta gizli ve ana ikon ortasında */
-  .is-hover-icons,
+  .logo img { width: 200px; }
   .yasam-sub-icons {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    pointer-events: none;
-    flex-direction: row;
-    gap: 10px;
-    transition: opacity 0.3s ease;
-    z-index: 20;
+    flex-direction: column; /* Mobilde tekrar dikey olsun */
+    gap: 8px;
   }
-
-  /* Toggle ile görünür */
-  .is-hover-icons.show,
-  .yasam-sub-icons.show {
-    opacity: 1;
-    pointer-events: auto;
+  .is-hover-icons {
+    flex-direction: column;
+    gap: 8px;
   }
-
   .is-hover-icons img { width: 80px; }
   .yasam-sub-icons img { width: 40px; }
+  .whatsapp { width: 60px; bottom: 15px; }
 }
