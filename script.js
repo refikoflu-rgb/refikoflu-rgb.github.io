@@ -1,65 +1,205 @@
-// Masaüstü hover için görsel swap (sadece data-hover olan img'lerde)
-document.querySelectorAll('.hover-icon').forEach(img => {
-  const hover = img.dataset.hover;
-  if (!hover) return;
-  const original = img.getAttribute('src');
-  img.addEventListener('mouseenter', () => { if (!isMobile()) img.src = hover; });
-  img.addEventListener('mouseleave', () => { if (!isMobile()) img.src = original; });
-});
-
-function isMobile() { return window.innerWidth <= 480; }
-
-let openPanel = null;
-
-// Alt panelleri kapat
-function closeAllPanels() {
-  document.querySelectorAll('.is-hover-icons, .yasam-sub-icons').forEach(el => el.classList.remove('show'));
-  openPanel = null;
+/* Genel ayarlar */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #fff;
+  position: relative;
+  min-height: 100vh;
 }
 
-// Mobil: ikon1 ve ikon3 için ilk dokunuşta alt ikonları aç/kapat
-['.is-icon-wrapper', '.yasam-icon-wrapper'].forEach(sel => {
-  const wrapper = document.querySelector(sel);
-  if (!wrapper) return;
-  const panel = wrapper.querySelector('.is-hover-icons, .yasam-sub-icons');
-  if (!panel) return;
+.full-image {
+  max-width: 100%;
+  height: auto;
+}
 
-  wrapper.addEventListener('click', (e) => {
-    if (!isMobile()) return;      // masaüstünü etkileme
-    e.stopPropagation();
+/* Logo */
+.logo {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  z-index: 50;
+}
 
-    // Başka bir panel açıksa kapat
-    if (openPanel && openPanel !== panel) {
-      openPanel.classList.remove('show');
-    }
+.logo img {
+  height: auto;
+  width: 200px;
+}
 
-    // Bu paneli toggle et (ilk dokunuş)
-    const willOpen = !panel.classList.contains('show');
-    if (willOpen) {
-      panel.classList.add('show');
-      openPanel = panel;
-    } else {
-      panel.classList.remove('show');
-      openPanel = null;
-    }
-  });
-});
+/* Ana ikonlar */
+.main-icon {
+  position: absolute;
+  width: 150px;
+  text-align: center;
+}
 
-// Mobil: alt ikonlardan birine dokunulursa link çalışır (engelleme yok)
+/* İş ikonu wrapper */
+.is-icon-wrapper {
+  top: 50%;
+  left: 20%;
+  transform: translateY(-50%);
+}
 
-// Sayfanın herhangi bir yerine veya LOGO'ya dokunulursa açık paneli kapat
-document.addEventListener('click', (e) => {
-  if (!isMobile()) return;
-  // Alt panel dışına tıklama
-  if (openPanel && !openPanel.contains(e.target)) {
-    // Logo ya da boş alan vs.
-    const clickedOnToggleWrapper =
-      e.target.closest('.is-icon-wrapper') || e.target.closest('.yasam-icon-wrapper');
-    if (!clickedOnToggleWrapper) {
-      closeAllPanels();
-    }
+/* Normal ikon */
+.is-main {
+  width: 100%;
+  transition: opacity 0.3s ease;
+}
+
+/* Hover ikonları masaüstü */
+.is-hover-icons {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.9);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.is-hover-icons img {
+  width: 150px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.is-hover-icons img:hover {
+  transform: scale(1.1);
+}
+
+/* Hover masaüstü */
+.is-icon-wrapper:hover .is-main {
+  opacity: 0;
+}
+
+.is-icon-wrapper:hover .is-hover-icons {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Aşk ikonu */
+.ask-wrapper {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+/* Yaşam alt ikonları */
+.yasam-icon-wrapper {
+  top: 50%;
+  right: 20%;
+  transform: translateY(-50%);
+  position: absolute;
+}
+
+.yasam-main {
+  width: 100%;
+}
+
+.hover-icon {
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center center;
+  width: 100%;
+}
+
+.hover-icon:hover {
+  transform: scale(1.15);
+}
+
+/* Yaşam alt ikonları */
+.yasam-sub-icons {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.9);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.yasam-sub-icons img {
+  width: 50px;
+  transition: transform 0.3s ease;
+}
+
+.yasam-sub-icons img:hover {
+  transform: scale(1.2);
+}
+
+.yasam-icon-wrapper:hover .yasam-sub-icons {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.yasam-icon-wrapper:hover .yasam-main {
+  opacity: 0;
+}
+
+/* WhatsApp */
+.whatsapp {
+  position: fixed;
+  left: 50%;
+  bottom: 30px;
+  z-index: 1000;
+  width: 90px;
+  transform: translateX(-50%);
+  transition: transform 0.3s ease;
+}
+
+.whatsapp:hover {
+  transform: translateX(-50%) scale(0.9);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+
+  .main-icon,
+  .is-icon-wrapper,
+  .yasam-icon-wrapper,
+  .ask-wrapper {
+    position: relative;
+    transform: none;
+    display: block;
+    margin: 10px auto;
   }
-});
 
-// Ekran yönü/değişiminde reset
-window.addEventListener('resize', () => { if (isMobile()) closeAllPanels(); });
+  /* Logo mobilde üstte ve sağda */
+  .logo {
+    top: 5%;
+    left: 5%;
+  }
+
+  /* Alt ikonlar başlangıçta gizli ve ana ikon ortasında */
+  .is-hover-icons,
+  .yasam-sub-icons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    pointer-events: none;
+    flex-direction: row;
+    gap: 10px;
+    transition: opacity 0.3s ease;
+    z-index: 20;
+  }
+
+  /* Toggle ile görünür */
+  .is-hover-icons.show,
+  .yasam-sub-icons.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .is-hover-icons img { width: 80px; }
+  .yasam-sub-icons img { width: 40px; }
+}
