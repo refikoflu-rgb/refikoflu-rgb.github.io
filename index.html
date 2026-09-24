@@ -1,56 +1,134 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RefikOFLU</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="stil.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refik Oflu</title>
+    <!-- Font Awesome İkonları -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            padding: 20px;
+        }
+
+        .card-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .card-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .avatar {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 36px;
+            color: #fff;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .phone-number {
+            font-size: 18px;
+            color: #94a3b8;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .whatsapp-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background-color: #25d366;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 16px 24px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #20ba5a;
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.6);
+            transform: scale(1.02);
+        }
+
+        .whatsapp-btn i {
+            font-size: 24px;
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #64748b;
+        }
+    </style>
 </head>
 <body>
-  <!-- Logo -->
-  <a href="/" class="logo">
-    <img src="resimler/logo.png" alt="RefikOFLU Logo">
-  </a>
 
-  <!-- İş ikonu (hover ile 2 ikon çıkıyor) -->
-  <div class="is-icon-wrapper main-icon">
-    <!-- Normal ikon -->
-    <img src="resimler/ikon1.png" alt="İş" class="is-main">
+    <div class="card-container">
+        <!-- Profil İkonu / Baş Harf -->
+        <div class="avatar">
+            <i class="fa-solid fa-user"></i>
+        </div>
 
-    <!-- Hover ikonları -->
-    <div class="is-hover-icons">
-      <a href="is.html">
-        <img src="resimler/ikon1-hover.png" alt="İş Sayfası">
-      </a>
-      <a href="is2.html">
-        <img src="resimler/ikon11-hover.png" alt="İş 2. Sayfa">
-      </a>
+        <!-- Ad Soyad -->
+        <h1>Refik Oflu</h1>
+
+        <!-- Telefon Numarası -->
+        <div class="phone-number">0533 087 99 33</div>
+
+        <!-- WhatsApp Yönlendirme Butonu -->
+        <a href="https://wa.me/905330879933" target="_blank" class="whatsapp-btn">
+            <i class="fa-brands fa-whatsapp"></i>
+            WhatsApp ile İletişime Geç
+        </a>
+
+        <footer>
+            &copy; refikoflu.com
+        </footer>
     </div>
-  </div>
 
-  <!-- Aşk ikonu -->
-  <a href="https://www.youtube.com/@refikoflu" target="_blank" class="main-icon ask-icon">
-    <img src="resimler/ikon2.png" data-hover="resimler/ikon2-hover.png"
-         class="hover-icon fixed-icon" alt="Aşk">
-  </a>
-
-  <!-- Yaşam ikonu -->
-  <div class="yasam-icon-wrapper main-icon">
-    <img src="resimler/ikon3.png" data-hover="resimler/ikon3-hover.png"
-         class="hover-icon fixed-icon yasam-main" alt="Yaşam">
-    <div class="yasam-sub-icons">
-      <a href="https://www.facebook.com/refikoflu" target="_blank"><img src="resimler/fb.png" alt="Facebook"></a>
-      <a href="https://www.instagram.com/refikoflu" target="_blank"><img src="resimler/insta.png" alt="Instagram"></a>
-      <a href="https://twitter.com/refikoflu" target="_blank"><img src="resimler/twitter.png" alt="Twitter"></a>
-    </div>
-  </div>
-
-  <!-- WhatsApp ikonu -->
-  <a href="https://wa.me/905330879933" target="_blank" class="whatsapp">
-    <img src="resimler/whatsapp.png" data-hover="resimler/whatsapp-hover.png" class="hover-icon" alt="WhatsApp">
-  </a>
-
-  <script src="script.js"></script>
 </body>
 </html>
